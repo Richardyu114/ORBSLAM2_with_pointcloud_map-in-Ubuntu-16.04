@@ -1,5 +1,5 @@
 # ORBSLAM2_with_pointcloud_map-in-Ubuntu-16.04
-make some changes to gaoxiang12's ORBSLAM2_with_pointcloud_map and can successfully compile and run without crash in the end
+make some changes to gaoxiang12's ORBSLAM2_with_pointcloud_map and then it can successfully compile and run without crash in the end
 
 
 
@@ -108,6 +108,63 @@ change "t.setRotation(t.rotation().angle()+_measurement);" to "t.setRotation((Ei
 open g2o/solvers/eigen/linear_solver_eigen.h
 change "typedef Eigen::PermutationMatrix<Eigen::Dynamic, Eigen::Dynamic, SparseMatrix::Index> PermutationMatrix;" to "typedef Eigen::PermutationMatrix<Eigen::Dynamic, Eigen::Dynamic, SparseMatrix::StorageIndex> PermutationMatrix;
 "
+
+cd path-to-g2o_with_orbslam2/g2o_with_orbslam2
+mkdir build
+cd build
+cmake ..
+make 
+sudo make install
+---
+```
+If you encounter some other errors, try to understand and change some related codes.(I just have aforementioned errors......)
+
+## 4.Install DBoW2
+
+```
+cd path-to-Thirdparty/Thirdparty/DBoW2
+mkdir build
+cd build
+cmake ..
+make 
+---
+```
+
+## 5.Install ORB_SLAM2_modified
+Firstly, open CMakeLists.txt in ORB_SLAM2_modified folder.
+change "find_package(OpenCV 2.4.3 REQUIRED)" . just correct the version of OpenCV.
+add "list (REMOVE_ITEM PCL_LIBRARIES "vtkproj4")" under "find_package( PCL 1.7 REQUIRED )".
+That's for successfully compile PCL when install ORB_SLAM2_modified in Ubuntu 16.04.
+
+Then copy ORBvoc to Vocabulary folder. You can find ORBvoc in ORB_SLAM2(https://github.com/raulmur/ORB_SLAM2).
+
+``
+cd path-to-ORB_SLAM2_modified/ORB_SLAM2_modified
+mkdir build
+cd build
+cmake ..
+make 
+---
+```
+Actually, it would be installed in you computer. You can run it with RGB-D dataset. https://github.com/raulmur/ORB_SLAM2 gives detailed instructions.
+
+But the one more thing is you may find the interface of extracting ORB feature crash after finishing processing dataset. Although we can shut it down by "Ctrl+C", it won't output CameraTrajectory.txt. The reason is realted Pangolin.
+
+So, annotate two lines in system.cc(the same operation can be done to ORB_SLAM2 if you meet this problem!)
+
+```
+//if(mpViewer)
+//pangolin::BindToContext("ORB-SLAM2: Map Viewer");
+```
+
+
+
+
+
+
+
+
+
 
 
 
