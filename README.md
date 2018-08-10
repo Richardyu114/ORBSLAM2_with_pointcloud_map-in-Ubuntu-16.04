@@ -108,7 +108,7 @@ change "t.setRotation(t.rotation().angle()+_measurement);" to "t.setRotation((Ei
 open g2o/solvers/eigen/linear_solver_eigen.h
 change "typedef Eigen::PermutationMatrix<Eigen::Dynamic, Eigen::Dynamic, SparseMatrix::Index> PermutationMatrix;" to "typedef Eigen::PermutationMatrix<Eigen::Dynamic, Eigen::Dynamic, SparseMatrix::StorageIndex> PermutationMatrix;
 "
-
+```
 cd path-to-g2o_with_orbslam2/g2o_with_orbslam2
 mkdir build
 cd build
@@ -138,7 +138,7 @@ That's for successfully compile PCL when install ORB_SLAM2_modified in Ubuntu 16
 
 Then copy ORBvoc to Vocabulary folder. You can find ORBvoc in ORB_SLAM2(https://github.com/raulmur/ORB_SLAM2).
 
-``
+```
 cd path-to-ORB_SLAM2_modified/ORB_SLAM2_modified
 mkdir build
 cd build
