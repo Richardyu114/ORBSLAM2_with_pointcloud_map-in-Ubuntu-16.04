@@ -148,7 +148,7 @@ make
 ```
 Actually, it would be installed in you computer. You can run it with RGB-D dataset. https://github.com/raulmur/ORB_SLAM2 gives detailed instructions.
 
-But the one more thing is you may find the interface of extracting ORB feature crash after finishing processing dataset. Although we can shut it down by "Ctrl+C", it won't output CameraTrajectory.txt. The reason is realted Pangolin.
+But the one more thing is you may find the interface of extracting ORB feature crash after finishing processing dataset. Although we can shut it down by "Ctrl+C", it won't output KeyFrameTrajectory.txt. The reason is realted Pangolin.
 
 So, annotate two lines in system.cc(the same operation can be done to ORB_SLAM2 if you meet this problem!)
 
