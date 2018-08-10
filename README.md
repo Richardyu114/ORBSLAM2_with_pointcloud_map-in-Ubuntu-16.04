@@ -157,7 +157,10 @@ So, annotate two lines in system.cc(the same operation can be done to ORB_SLAM2 
 //pangolin::BindToContext("ORB-SLAM2: Map Viewer");
 ```
 
+## Besides
 
+You might find it would have some errors about optimizer.cc when compile ORB_SLAM2_modified. Most possibly, it's caused by "unique_ptr".
+Try the corrected optimizer.cc in my repository. Or you can google it and try to correct it by youself.
 
 
 
